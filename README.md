@@ -1,2 +1,2 @@
 # EveOn
-HackFest-IIT Dhanbad '23
+HackFest'23-IIT Dhanbad
