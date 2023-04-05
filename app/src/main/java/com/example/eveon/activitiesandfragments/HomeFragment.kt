@@ -24,7 +24,7 @@ private lateinit var floatingactionbtn:FloatingActionButton
 
         floatingactionbtn=view.findViewById(R.id.floating_action_home)
         floatingactionbtn.setOnClickListener {
-       val intent=Intent(context,AddingEvent::class.java)
+         val intent=Intent(context,AddingEvent::class.java)
             startActivity(intent)
         }
 
