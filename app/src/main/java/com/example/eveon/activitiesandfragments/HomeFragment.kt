@@ -10,7 +10,7 @@ import com.example.eveon.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 class HomeFragment : Fragment() {
 private lateinit var floatingactionbtn:FloatingActionButton
-
+//hello1
 
 
     override fun onCreateView(
