@@ -1,6 +1,7 @@
 package pages
 
 import android.app.Dialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -16,7 +17,10 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
+        val btnsignup=findViewById<TextView>(R.id.gotoRegister)
+        btnsignup.setOnClickListener {
+            startActivity(Intent(this,SignUp::class.java))
+        }
 
 
 
