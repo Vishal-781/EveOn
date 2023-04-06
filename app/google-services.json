@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "317767481823-p469q4cuom0p1jgqjs9kch93aipjm6bg.apps.googleusercontent.com",
+          "client_id": "317767481823-s588grh7sltoiv458njn9rvh4id17b3e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.eveon",
+            "certificate_hash": "de80f487c43522e00598f39d6598631e974345dc"
+          }
+        },
+        {
+          "client_id": "317767481823-oe71ud3jmf49rpqeqcvtoqnr389lv8ms.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,7 +35,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "317767481823-p469q4cuom0p1jgqjs9kch93aipjm6bg.apps.googleusercontent.com",
+              "client_id": "317767481823-oe71ud3jmf49rpqeqcvtoqnr389lv8ms.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

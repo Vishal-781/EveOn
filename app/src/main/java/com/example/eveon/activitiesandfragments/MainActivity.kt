@@ -22,8 +22,9 @@ class MainActivity : AppCompatActivity() {
         navigation.add(MeowBottomNavigation.Model(2,R.drawable.placard4))
         navigation.add(MeowBottomNavigation.Model(3,R.drawable.lost_and_foundreal))
         navigation.add(MeowBottomNavigation.Model(4,R.drawable.user1))
-
+        navigation.show(1,true)
       addfragment(HomeFragment(), 0)
+
         navigation.setOnClickMenuListener {
             when(it.id)
             {
@@ -37,8 +38,9 @@ class MainActivity : AppCompatActivity() {
             }
             true
 
+
         }
-        navigation.show(1,true)
+
 //        binding.bottomNavigationBar.itemIconTintList=null
 //
 //        addfragment(HomeFragment(), 0)
