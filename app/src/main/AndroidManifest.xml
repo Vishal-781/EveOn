@@ -14,9 +14,13 @@
         android:theme="@style/Theme.EveOn"
         tools:targetApi="31">
         <activity
-            android:name="pages.SignUp"
+            android:name="pages.forgotpassword"
             android:exported="false"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name="pages.SignUp"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name="pages.Login"
             android:exported="false"

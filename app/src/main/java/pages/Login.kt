@@ -49,6 +49,11 @@ class Login : AppCompatActivity() {
             showprogressdialog("Signing Up...")
             SigninGoogle()
         }
+        val forgotpassword=findViewById<TextView>(R.id.forgotPassword).setOnClickListener {
+            val intent =Intent(this,forgotpassword::class.java)
+            startActivity(intent)
+
+        }
 
 
 
