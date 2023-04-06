@@ -14,4 +14,5 @@
     <color name="light">#A6ECD4</color>
     <color name="snackbar_error_color">#F72400</color>
     <color name="coloraccent">#0C90F1</color>
+    <color name="black_1">#F2272727</color>
 </resources>

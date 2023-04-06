@@ -3,15 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activitiesandfragments.HomeFragment"
-    android:background="@drawable/full_image1">
+    android:background="@drawable/full_image1"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <androidx.appcompat.widget.SearchView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="home Fragment"
-        android:gravity="center"/>
+        android:layout_height="wrap_content"
+         android:background="@drawable/search_view"
+         app:searchIcon="@drawable/baseline_search_24"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:queryHint="Search Events..."
+        app:iconifiedByDefault="false"
+        />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floating_action_home"
@@ -23,5 +32,4 @@
         android:backgroundTint="#9D67FB"
         android:src="@drawable/baseline_post_add_24"
         />
-
-</RelativeLayout>
+    </RelativeLayout>

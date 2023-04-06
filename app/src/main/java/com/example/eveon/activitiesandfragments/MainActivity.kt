@@ -2,6 +2,7 @@ package com.example.eveon.activitiesandfragments
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 
@@ -17,6 +18,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
          navigation =findViewById(R.id.bottom_navigation_bar)
+        val   toolbar_homefragment1=findViewById<Toolbar>(R.id.toolbar_homefragment)
+        toolbar_homefragment1.title = "EVEON"
+
+        toolbar_homefragment1.setTitleTextColor(resources.getColor(R.color.black_1))
 
         navigation.add(MeowBottomNavigation.Model(1,R.drawable.house_real))
         navigation.add(MeowBottomNavigation.Model(2,R.drawable.placard4))
@@ -39,6 +44,19 @@ class MainActivity : AppCompatActivity() {
             true
 
 
+        }
+        navigation.setOnShowListener {
+            when(it.id)
+            {
+                1-> navigation.setBackgroundColor(resources.getColor(R.color.coloraccent))
+                2-> navigation.setBackgroundColor(resources.getColor(com.jpardogo.android.googleprogressbar.library.R.color.green))
+                3-> addfragment(unknownfragment(),1)
+                4-> addfragment(ProfileFragment(),1)
+                else->{
+
+                }
+            }
+            true
         }
 
 //        binding.bottomNavigationBar.itemIconTintList=null
