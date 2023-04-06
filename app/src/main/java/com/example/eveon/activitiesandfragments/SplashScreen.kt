@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.widget.TextView
 import com.example.eveon.R
+import pages.Login
 
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +21,7 @@ class SplashScreen : AppCompatActivity() {
         tv_splash1.typeface=typeface1
         Handler().postDelayed(
             {
-                startActivity(Intent(this, MainActivity::class.java))
+                startActivity(Intent(this, Login::class.java))
                 finish()
             },
             1500,

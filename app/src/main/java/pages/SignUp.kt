@@ -11,46 +11,21 @@ import androidx.core.content.ContextCompat
 import com.example.eveon.R
 import com.google.android.material.snackbar.Snackbar
 
-class Login : AppCompatActivity() {
+class SignUp : AppCompatActivity() {
     private lateinit var  mprogressdialog: Dialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_sign_up)
 
 
 
-
-
-
-
-
-    }
-    private fun revalidate1(
-        email1: String,
-        password1: String
-    )
-            : Boolean {
-        return when{
-            TextUtils.isEmpty(email1)->{
-                showerrorsnackbar("Please enter your Email Address")
-                false
-            }
-            TextUtils.isEmpty(password1)->{
-                showerrorsnackbar("Please enter your Password")
-                false
-            }
-            else->{
-                true
-            }
-
-        }
 
 
 
 
     }
     fun showprogressdialog(Text:String){
-        mprogressdialog=Dialog(this)
+        mprogressdialog= Dialog(this)
         mprogressdialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         mprogressdialog.setContentView(R.layout.dialog_progress)
         mprogressdialog.setCancelable(false)
@@ -64,6 +39,30 @@ class Login : AppCompatActivity() {
     fun hideprogressdialog()
     {
         mprogressdialog.dismiss()
+    }
+    private fun formvalidate(name:String,email:String,password:String)
+            : Boolean {
+        return when{
+            TextUtils.isEmpty(name)->{
+                showerrorsnackbar("Please enter your Name")
+                false
+            }
+            TextUtils.isEmpty(email)->{
+                showerrorsnackbar("Please enter your Email Address")
+                false
+            }
+            TextUtils.isEmpty(password)->{
+                showerrorsnackbar("Please enter your Password")
+                false
+            }
+            else->{
+                true
+            }
+
+        }
+
+
+
     }
     fun showerrorsnackbar(message:String){
         // gives the root element of a view without actually knowing its id
