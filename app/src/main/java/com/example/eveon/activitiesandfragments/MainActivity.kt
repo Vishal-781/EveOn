@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
             when(it.id)
             {
                 1-> navigation.setBackgroundColor(resources.getColor(R.color.coloraccent))
+
                 2-> navigation.setBackgroundColor(resources.getColor(com.jpardogo.android.googleprogressbar.library.R.color.green))
                 3-> addfragment(unknownfragment(),1)
                 4-> addfragment(ProfileFragment(),1)
@@ -107,6 +108,7 @@ class MainActivity : AppCompatActivity() {
 
     super.onBackPressed()
     this.finishAffinity()
+
 
 //        if (binding.bottomNavigationBar.selectedItemId == R.id.home123  ) {
 //            super.onBackPressed()

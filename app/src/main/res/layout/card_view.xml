@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="26dp"
+    android:layout_marginHorizontal="26dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="10dp"
+    >
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:outlineAmbientShadowColor="@color/black"
+        android:outlineSpotShadowColor="@color/black"
+        android:src="@drawable/signupname"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginStart="263dp"
+        android:layout_marginTop="20dp"
+        android:text="EVENT" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginStart="251dp"
+        android:layout_marginTop="80dp"
+        android:padding="5dp"
+        android:text="Event Name" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginStart="251dp"
+        android:layout_marginTop="140dp"
+        android:padding="5dp"
+        android:text="Event Date and time" />
+
+</RelativeLayout>
+</androidx.cardview.widget.CardView>
+
+
+</LinearLayout>

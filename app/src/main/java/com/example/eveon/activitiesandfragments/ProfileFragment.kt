@@ -5,25 +5,30 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.TextView
 import com.example.eveon.R
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class ProfileFragment : Fragment() {
-
-
+    var firebase = FirebaseFirestore.getInstance()
+    var mAuth = FirebaseAuth.getInstance()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
+        val view = inflater.inflate(R.layout.fragment_profile, container, false)
+        var uid = mAuth.uid
 
-        val view=inflater.inflate(R.layout.fragment_profile, container, false)
+        var email = mAuth.currentUser?.email
+        var name = view.findViewById<TextView>(R.id.name)
+        var emailView = view.findViewById<TextView>(R.id.email)
+
+
         return view
     }
+
 
 
 }
