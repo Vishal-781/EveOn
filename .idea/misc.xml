@@ -22,7 +22,7 @@
         <entry key="app/src/main/res/layout/error_toast_layout.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.5142138470660199" />
         <entry key="app/src/main/res/layout/fragment_my_events_.xml" value="0.21979166666666666" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.3463425393256762" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.5989091692349962" />
         <entry key="app/src/main/res/layout/p_details.xml" value="0.2331527709960938" />
       </map>
     </option>
@@ -33,5 +33,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.3463425393256762" />
+      </ProjectState>
+    </option>
   </component>
 </project>

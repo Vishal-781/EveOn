@@ -15,6 +15,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import com.example.eveon.R
 import com.example.eveon.activitiesandfragments.MainActivity
+import com.example.eveon.activitiesandfragments.p_details
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -94,9 +95,7 @@ class Login : AppCompatActivity() {
                     txtmsg12.setText( "You Have Signed In Successfully")
                     toast4.duration.toLong()
                     toast4.show()
-                    val intent=Intent(this,MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
+
 
                 }
                 else{
@@ -131,9 +130,8 @@ class Login : AppCompatActivity() {
                   txtmsg12.setText( "You Have Signed In Successfully")
                   toast4.duration.toLong()
                   toast4.show()
-
+                  startActivity(Intent(this, MainActivity::class.java))
                   finish()
-                  startActivity(Intent(this,MainActivity::class.java))
               }else{
                   val layout1=layoutInflater.inflate(R.layout.error_toast_layout,findViewById(R.id.view_layout_of_toast1))
                   val toast1:Toast= Toast(this)

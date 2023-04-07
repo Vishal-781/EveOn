@@ -13,14 +13,12 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.eveon.R
 import com.example.eveon.activitiesandfragments.MainActivity
+import com.example.eveon.activitiesandfragments.p_details
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import models.UserModel
-import models.pDetails
-
 class SignUp : AppCompatActivity() {
-    var firebaseDatabase = FirebaseFirestore.getInstance()
     var mAuth = FirebaseAuth.getInstance()
     private lateinit var  mprogressdialog: Dialog
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,11 +26,13 @@ class SignUp : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
        findViewById<Button>(R.id.sgnButton).setOnClickListener {
            userRegistered()
+
        }
-          val btnsignup=findViewById<TextView>(R.id.gotoLogin)
+        val btnsignup=findViewById<TextView>(R.id.gotoLogin)
               btnsignup.setOnClickListener {
-            startActivity(Intent(this, Login::class.java))
-            finish()
+                  val intent=Intent(this, Login::class.java)
+                  startActivity(intent)
+                  finish()
         }
 
 
@@ -64,7 +64,7 @@ class SignUp : AppCompatActivity() {
                     txtmst.text = getString(R.string.sucReg)
                     toast.duration.toLong()
                     toast.show()
-                    startActivity(Intent(this, MainActivity::class.java))
+                    startActivity(Intent(this, p_details::class.java))
                     finish()
 
                 }else {
