@@ -1,28 +1,34 @@
 package com.example.eveon.activitiesandfragments
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 
 import com.example.eveon.R
 import com.example.eveon.databinding.ActivityMainBinding
+import com.google.firebase.auth.FirebaseAuth
+import pages.Login
 
 
 class MainActivity : AppCompatActivity() {
       private lateinit var navigation:MeowBottomNavigation
-
+    var mAuth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
          navigation =findViewById(R.id.bottom_navigation_bar)
         val   toolbar_homefragment1=findViewById<Toolbar>(R.id.toolbar_homefragment)
-        toolbar_homefragment1.title = "EVEON"
+        toolbar_homefragment1.title = resources.getString(R.string.app_name)
 
         toolbar_homefragment1.setTitleTextColor(resources.getColor(R.color.black_1))
-
+        setSupportActionBar(toolbar_homefragment1)
         navigation.add(MeowBottomNavigation.Model(1,R.drawable.house_real))
         navigation.add(MeowBottomNavigation.Model(2,R.drawable.placard4))
         navigation.add(MeowBottomNavigation.Model(3,R.drawable.lost_and_foundreal))
@@ -121,9 +127,21 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.top_menu,menu)
+        return true
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.logout->{
+                mAuth.signOut()
+                startActivity(Intent(this, Login::class.java))
+            }
+            R.id.about->{
 
-
-
-
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }

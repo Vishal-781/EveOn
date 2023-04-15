@@ -17,6 +17,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19429347826086957" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.22920532226562496" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.29583333333333334" />
+        <entry key="app/src/main/res/layout/card_view.xml" value="0.2292750040690104" />
         <entry key="app/src/main/res/layout/custom_toast_layout.xml" value="0.2" />
         <entry key="app/src/main/res/layout/dialog_progress.xml" value="0.35498962402343753" />
         <entry key="app/src/main/res/layout/error_toast_layout.xml" value="0.2" />
@@ -25,6 +26,8 @@
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.5989091692349962" />
         <entry key="app/src/main/res/layout/list_item.xml" value="0.21875" />
         <entry key="app/src/main/res/layout/p_details.xml" value="0.2331527709960938" />
+        <entry key="app/src/main/res/menu/bottom_navbar.xml" value="0.21979166666666666" />
+        <entry key="app/src/main/res/menu/top_menu.xml" value="0.24926605224609377" />
       </map>
     </option>
   </component>
