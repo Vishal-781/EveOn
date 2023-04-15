@@ -1,27 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activitiesandfragments.AddingEvent">
+
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_full_image"
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            android:background="#2196F3"
-            app:title="Add Event"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-            />
     </com.google.android.material.appbar.AppBarLayout>
-    <TextView
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_full_image"
+        android:layout_width="0dp"
+        android:layout_height="?actionBarSize"
+        android:background="#2196F3"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Add Event" />
+
+    <EditText
+        android:id="@+id/eName"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
+        android:layout_width="261dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Event Name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_full_image" />
+
+    <Button
+        android:id="@+id/dateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add new event here"
-        android:layout_centerInParent="true"/>
+        android:layout_marginTop="32dp"
+        android:hint="Select date"
+        app:backgroundTint="#CDD1D5"
+        app:layout_constraintStart_toStartOf="@+id/eName"
+        app:layout_constraintTop_toBottomOf="@+id/eName" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/timeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:hint="Select time"
+        app:backgroundTint="#CDD1D5"
+        app:layout_constraintBottom_toBottomOf="@+id/dateButton"
+        app:layout_constraintStart_toEndOf="@+id/dateButton" />
+
+    <EditText
+        android:id="@+id/eDes"
+        android:layout_width="261dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Event Description"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/dateButton"
+        app:layout_constraintTop_toBottomOf="@+id/dateButton" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        android:layout_width="261dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+
+        android:hint="Choose a location"
+        app:layout_constraintStart_toStartOf="@+id/eDes"
+        app:layout_constraintTop_toBottomOf="@+id/eDes">
+
+        <AutoCompleteTextView
+            android:id="@+id/location"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_width="261dp"
+            android:layout_height="60dp"
+            android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Submit"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
