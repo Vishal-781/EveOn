@@ -37,42 +37,42 @@ class Login : AppCompatActivity() {
     private lateinit var  mprogressdialog: Dialog
     private lateinit var mauth:FirebaseAuth
      private lateinit var googlesigninclient:GoogleSignInClient
-     private lateinit var facebookbutton:Button
-     private lateinit var callbackmanager:CallbackManager
+//     private lateinit var facebookbutton:Button
+//     private lateinit var callbackmanager:CallbackManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         val btnsignup=findViewById<TextView>(R.id.gotoRegister)
-        facebookbutton=findViewById(R.id.facebookLogin)
+//        facebookbutton=findViewById(R.id.facebookLogin)
         btnsignup.setOnClickListener {
             startActivity(Intent(this,SignUp::class.java))
         }
       mauth= FirebaseAuth.getInstance()
-        callbackmanager= CallbackManager.Factory.create()
-        val accessToken=AccessToken.getCurrentAccessToken()
-        if(accessToken!=null && !accessToken.isExpired)
-        {
-           startActivity(Intent(this,MainActivity::class.java))
-            finish()
-        }
-        LoginManager.getInstance().registerCallback(callbackmanager,object:FacebookCallback<LoginResult>{
-            override fun onCancel() {
-
-            }
-
-            override fun onError(error: FacebookException) {
-
-            }
-
-            override fun onSuccess(result: LoginResult) {
-                startActivity(Intent(this@Login,MainActivity::class.java))
-                finish()
-            }
-
-        })
-        facebookbutton.setOnClickListener {
-            LoginManager.getInstance().logInWithReadPermissions(this, listOf("public_profile,email"))
-        }
+//        callbackmanager= CallbackManager.Factory.create()
+//        val accessToken=AccessToken.getCurrentAccessToken()
+//        if(accessToken!=null && !accessToken.isExpired)
+//        {
+//           startActivity(Intent(this,MainActivity::class.java))
+//            finish()
+//        }
+//        LoginManager.getInstance().registerCallback(callbackmanager,object:FacebookCallback<LoginResult>{
+//            override fun onCancel() {
+//
+//            }
+//
+//            override fun onError(error: FacebookException) {
+//
+//            }
+//
+//            override fun onSuccess(result: LoginResult) {
+//                startActivity(Intent(this@Login,MainActivity::class.java))
+//                finish()
+//            }
+//
+//        })
+//        facebookbutton.setOnClickListener {
+//            LoginManager.getInstance().logInWithReadPermissions(this, listOf("public_profile,email"))
+//        }
         findViewById<Button>(R.id.lgnButton).setOnClickListener{
            signinregistereduser()
     }
