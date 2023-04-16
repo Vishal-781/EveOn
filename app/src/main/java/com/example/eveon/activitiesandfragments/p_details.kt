@@ -61,8 +61,8 @@ class p_details : AppCompatActivity() {
 
     private fun chooseimage() {
 
-      val intent=Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(intent,100)
+       val intent=Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+          startActivityForResult(intent,100)
     }
 
 //URI : Uniform resource identifier

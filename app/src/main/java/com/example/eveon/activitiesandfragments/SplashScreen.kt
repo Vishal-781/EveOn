@@ -7,9 +7,11 @@ import android.os.Bundle
 import android.os.Handler
 import android.widget.TextView
 import com.example.eveon.R
+import com.google.firebase.auth.FirebaseAuth
 import pages.Login
 
 class SplashScreen : AppCompatActivity() {
+    private lateinit var mauth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
@@ -19,6 +21,7 @@ class SplashScreen : AppCompatActivity() {
         val typeface1:Typeface= Typeface.createFromAsset(assets,"kwokwi.regular.otf")
         val tv_splash1:TextView=findViewById(R.id.tv_splash_1)
         tv_splash1.typeface=typeface1
+
         Handler().postDelayed(
             {
                 startActivity(Intent(this, Login::class.java))
@@ -26,5 +29,9 @@ class SplashScreen : AppCompatActivity() {
             },
             1500,
         )
+
+
+
+
     }
 }

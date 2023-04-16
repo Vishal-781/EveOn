@@ -64,8 +64,8 @@ class SignUp : AppCompatActivity() {
                     txtmst.text = getString(R.string.sucReg)
                     toast.duration.toLong()
                     toast.show()
-                    startActivity(Intent(this, p_details::class.java))
-                    finish()
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finishAffinity()
 
                 }else {
                     val layout1 =layoutInflater.inflate(R.layout.error_toast_layout,findViewById(R.id.view_layout_of_toast1))

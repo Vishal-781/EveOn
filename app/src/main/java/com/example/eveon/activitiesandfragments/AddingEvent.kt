@@ -83,7 +83,7 @@ class AddingEvent : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Tim
                     var id :String=uid
                     uid.let {
                         db.collection("users").document(it).get().addOnSuccessListener() { ds ->
-                            num = ds.toObject<UserModel>()?.pDetails?.eCount!!
+                            num = ds.toObject<UserModel>()!!.pDetails.eCount
                             id = "$uid$num"
                             num+=1
 //                            Toast.makeText(this,id,Toast.LENGTH_LONG).show()
