@@ -40,11 +40,15 @@ class AddingEvent : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Tim
     private var loc = ""
     lateinit var eName :String
     lateinit var eDes :String
+    lateinit var eTags :String
+    private var eBug = 0
     private val cal = Calendar.getInstance()
     lateinit var dateBtn : Button
     lateinit var timeBtn : Button
     lateinit var eNameEt : EditText
     lateinit var eDesEt : EditText
+    lateinit var eTagsEt : EditText
+    lateinit var eBugEt : EditText
     lateinit var btn : Button
     private lateinit var locationDropDown : AutoCompleteTextView
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,10 +57,12 @@ class AddingEvent : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Tim
         setupActionBar()
         eNameEt = findViewById(R.id.eName)
         eDesEt = findViewById(R.id.eDes)
+        eBugEt = findViewById(R.id.eBug)
+        eTagsEt = findViewById(R.id.eTag)
         dateBtn = findViewById(R.id.dateButton)
         timeBtn = findViewById(R.id.timeButton)
         btn = findViewById(R.id.button)
-        locationDropDown = findViewById(R.id.location)
+        locationDropDown = findViewById(R.id.eLoc)
         dateBtn.setOnClickListener {
             pickDate()
         }
@@ -73,42 +79,60 @@ class AddingEvent : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Tim
 
             eName = eNameEt.text.toString()
             eDes = eDesEt.text.toString()
-            if(TextUtils.isEmpty(eName) || TextUtils.isEmpty(eDes)||TextUtils.isEmpty(dateBtn.text.toString())||TextUtils.isEmpty(timeBtn.text.toString())||loc==""){
+            eBug = Integer.parseInt(eBugEt.text.toString())
+            eTags = eTagsEt.text.toString()
+            if(TextUtils.isEmpty(eName) || TextUtils.isEmpty(eDes)||TextUtils.isEmpty(dateBtn.text.toString())||TextUtils.isEmpty(timeBtn.text.toString())||loc==""||TextUtils.isEmpty(eBugEt.text.toString())||TextUtils.isEmpty(eTagsEt.text.toString())){
                 showerrorsnackbar("Please Enter all the Field")
             }
             else{
                 val uid : String? = mAuth.currentUser?.uid
                 if (uid != null) {
                     val eventRef = db.collection("users").document(uid).collection("events")
-                    val event = Event(eName,sday,smonth,syear,shour,sminute,eDes,loc,)
+                    val event = Event(eName,sday,smonth,syear,shour,sminute,eDes,loc,eBug)
                     var num:Int =0
                     var id :String=uid
-                    uid.let {
-                        db.collection("users").document(it).get().addOnSuccessListener() { ds ->
-                            num = ds.toObject<UserModel>()!!.pDetails.eCount
-                            id = "$uid$num"
-                            num+=1
+                    uid.let { it1 ->
+                        eventRef.get().addOnCompleteListener {
+                            val list = it.result.documents
+                            var i =0
+                            val p = uid.length
+                            for(d in list){
+                               val idl = d.id.length
+                                if(i!=Integer.parseInt(d.id.substring(p,idl)))
+                               {
+                                   break
+                               }
+                                i++
+                            }
+                            id = "$uid$i"
+                            db.collection("users").document(it1).get().addOnSuccessListener() { ds ->
+                                num = ds.toObject<UserModel>()!!.pDetails.eCount
+                                num+=1
 //                            Toast.makeText(this,id,Toast.LENGTH_LONG).show()
-                        }.addOnCompleteListener(){
-                            eventRef.document(id).set(event).addOnSuccessListener {
-                                db.collection("users").document(uid).update("pdetails.ecount",num)
-                                db.collection("allEvents").document(id).set(event).addOnSuccessListener {
-                                    Toast.makeText(this,"Event added",Toast.LENGTH_LONG).show()
+                            }.addOnCompleteListener(){
+                                eventRef.document(id).set(event).addOnSuccessListener {
+                                    db.collection("users").document(uid).update("pdetails.ecount",num)
+                                    db.collection("allEvents").document(id).set(event).addOnSuccessListener {
+                                        Toast.makeText(this,"Event added",Toast.LENGTH_LONG).show()
+                                    }
+                                        .addOnFailureListener {
+                                                e->
+                                            Toast.makeText(this,e.toString(),Toast.LENGTH_LONG).show()
+                                        }
+                                        .addOnCompleteListener {
+
+                                            finish()
+                                            startActivity(Intent(this,MainActivity::class.java))
+                                        }
                                 }
                                     .addOnFailureListener {
                                             e->
                                         Toast.makeText(this,e.toString(),Toast.LENGTH_LONG).show()
                                     }
-                                    .addOnCompleteListener {
-                                        finish()
-                                    }
-                            }
-                                .addOnFailureListener {
-                                    e->
-                                    Toast.makeText(this,e.toString(),Toast.LENGTH_LONG).show()
-                                }
 
+                            }
                         }
+
                     }
                 }
             }

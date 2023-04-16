@@ -6,7 +6,6 @@
         <item name="colorPrimaryVariant">#2196F3</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="windowNoTitle">true</item>
 
         <item name="android:windowFullscreen">true</item>
         <item name="colorSecondary">#2196F3</item>
@@ -15,6 +14,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
 </resources>

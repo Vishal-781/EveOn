@@ -58,8 +58,5 @@ class RunningEventsAdapter(
         holder.eventname?.text=event.eName
         holder.eventlocation!!.text=event.eLoc
         holder.eventdatetime!!.text="${event.eDay+event.eMonth+event.eYear+event.eHour+event.eMinute}"
-
-
-
     }
 }

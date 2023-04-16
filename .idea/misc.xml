@@ -11,7 +11,7 @@
         <entry key="app/src/main/res/drawable/round_bg.xml" value="0.133" />
         <entry key="app/src/main/res/drawable/round_border.xml" value="0.133" />
         <entry key="app/src/main/res/drawable/wave.xml" value="0.133" />
-        <entry key="app/src/main/res/layout/activity_adding_event.xml" value="0.292083740234375" />
+        <entry key="app/src/main/res/layout/activity_adding_event.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_forgotpassword.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.19231567382812498" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19429347826086957" />
@@ -26,7 +26,7 @@
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.5989091692349962" />
         <entry key="app/src/main/res/layout/fragment_unknownfragment.xml" value="0.21979166666666666" />
         <entry key="app/src/main/res/layout/list_item.xml" value="0.21875" />
-        <entry key="app/src/main/res/layout/p_details.xml" value="0.2331527709960938" />
+        <entry key="app/src/main/res/layout/p_details.xml" value="0.15245208740234378" />
         <entry key="app/src/main/res/menu/bottom_navbar.xml" value="0.21979166666666666" />
         <entry key="app/src/main/res/menu/top_menu.xml" value="0.24926605224609377" />
       </map>
@@ -42,7 +42,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.36752866349130303" />
+        <option name="scale" value="0.1" />
       </ProjectState>
     </option>
   </component>
