@@ -4,6 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.eveon.R
 import models.Event
@@ -24,9 +26,22 @@ class RunningEventsAdapter(
 
     }
 
-    inner class ViewHolder(viewitem: View):RecyclerView.ViewHolder(viewitem)
+    inner class ViewHolder(view: View):RecyclerView.ViewHolder(view)
     {
+       var eventimage:ImageView?=null
+       var eventname:TextView?=null
+       var eventlocation:TextView?=null
+       var eventdatetime:TextView?=null
 
+        init {
+         eventimage=view.findViewById(R.id.imageEvent)
+         eventname=view.findViewById(R.id.EventName)
+         eventlocation=view.findViewById(R.id.EventLocation)
+         eventdatetime=view.findViewById(R.id.EventDateTime)
+
+
+
+        }
 
 
 
@@ -49,6 +64,6 @@ class RunningEventsAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+
     }
 }
