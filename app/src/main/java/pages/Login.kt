@@ -16,10 +16,7 @@ import androidx.core.content.ContextCompat
 import com.example.eveon.R
 import com.example.eveon.activitiesandfragments.MainActivity
 import com.example.eveon.activitiesandfragments.p_details
-import com.facebook.AccessToken
-import com.facebook.CallbackManager
-import com.facebook.FacebookCallback
-import com.facebook.FacebookException
+import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -32,12 +29,13 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthCredential
 import com.google.firebase.auth.GoogleAuthProvider
+import org.json.JSONObject
 
 class Login : AppCompatActivity() {
     private lateinit var  mprogressdialog: Dialog
     private lateinit var mauth:FirebaseAuth
      private lateinit var googlesigninclient:GoogleSignInClient
-//     private lateinit var facebookbutton:Button
+//     private lateinit var facebookbutton:ImageView
 //     private lateinit var callbackmanager:CallbackManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,25 +53,48 @@ class Login : AppCompatActivity() {
 //           startActivity(Intent(this,MainActivity::class.java))
 //            finish()
 //        }
+
+//        facebookbutton.setOnClickListener {
+//            LoginManager.getInstance().logInWithReadPermissions(this, listOf("public_profile,email"))
+//        }
 //        LoginManager.getInstance().registerCallback(callbackmanager,object:FacebookCallback<LoginResult>{
 //            override fun onCancel() {
-//
+//                val layout1=layoutInflater.inflate(R.layout.error_toast_layout,findViewById(R.id.view_layout_of_toast1))
+//                val toast1:Toast= Toast(this@Login)
+//                toast1.view=layout1
+//                val txtmsg1:TextView=layout1.findViewById(R.id.textview_toast1)
+//                txtmsg1.setText("Login Failed")
+//                toast1.duration.toShort()
+//                toast1.show()
 //            }
 //
 //            override fun onError(error: FacebookException) {
-//
+//                TODO("Not yet implemented")
 //            }
 //
 //            override fun onSuccess(result: LoginResult) {
+//                val layout123=layoutInflater.inflate(R.layout.custom_toast_layout,findViewById(R.id.view_layout_of_toast))
+//                val   toast4: Toast = Toast(this@Login)
+//                toast4.view=layout123
+//                val txtmsg12:TextView=layout123.findViewById(R.id.textview_toast)
+//                txtmsg12.setText( "You Have Signed In Successfully")
+//                toast4.duration.toLong()
+//                toast4.show()
 //                startActivity(Intent(this@Login,MainActivity::class.java))
 //                finish()
 //            }
 //
 //        })
-//        facebookbutton.setOnClickListener {
-//            LoginManager.getInstance().logInWithReadPermissions(this, listOf("public_profile,email"))
-//        }
-        findViewById<Button>(R.id.lgnButton).setOnClickListener{
+    mauth=FirebaseAuth.getInstance()
+    val currentuserid=mauth.uid
+
+    if (currentuserid!=null)
+    {  startActivity(Intent(this,MainActivity::class.java))}
+
+
+
+
+          findViewById<Button>(R.id.lgnButton).setOnClickListener{
            signinregistereduser()
     }
         val gso=GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).
@@ -112,6 +133,7 @@ class Login : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
         if(requestCode==100)
         {
             val task=GoogleSignIn.getSignedInAccountFromIntent(data)
@@ -237,3 +259,4 @@ class Login : AppCompatActivity() {
 
     }
 }
+
