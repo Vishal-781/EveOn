@@ -64,7 +64,7 @@ class SignUp : AppCompatActivity() {
                     txtmst.text = getString(R.string.sucReg)
                     toast.duration.toLong()
                     toast.show()
-                    startActivity(Intent(this, MainActivity::class.java))
+                    startActivity(Intent(this, p_details::class.java))
                     finishAffinity()
 
                 }else {

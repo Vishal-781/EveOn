@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
          navigation =findViewById(R.id.bottom_navigation_bar)
+
         val   toolbar_homefragment1=findViewById<Toolbar>(R.id.toolbar_homefragment)
         toolbar_homefragment1.title = resources.getString(R.string.app_name)
 

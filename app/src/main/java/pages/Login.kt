@@ -8,6 +8,7 @@ import android.os.Handler
 import android.text.TextUtils
 import android.view.Window
 import android.widget.Button
+import android.widget.ImageView
 //import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -15,6 +16,9 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.eveon.R
 import com.example.eveon.activitiesandfragments.MainActivity
+
+//import com.google.android.gms.auth.api.signin.GoogleSignInClient
+//import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 //import com.example.eveon.activitiesandfragments.p_details
 //import com.facebook.AccessToken
 //import com.facebook.CallbackManager
@@ -36,7 +40,7 @@ import com.google.firebase.auth.FirebaseAuth
 class Login : AppCompatActivity() {
     private lateinit var  mprogressdialog: Dialog
     private lateinit var mauth:FirebaseAuth
-//     private lateinit var googlesigninclient:GoogleSignInClient
+//     private lateinit var googlesigninclient: GoogleSignInClient
 //     private lateinit var facebookbutton:Button
 //     private lateinit var callbackmanager:CallbackManager
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,12 +78,18 @@ class Login : AppCompatActivity() {
 //        facebookbutton.setOnClickListener {
 //            LoginManager.getInstance().logInWithReadPermissions(this, listOf("public_profile,email"))
 //        }
-        findViewById<Button>(R.id.lgnButton).setOnClickListener{
+    mauth=FirebaseAuth.getInstance()
+    val currentuserid=mauth.uid
+
+    if (currentuserid!=null)
+    {  startActivity(Intent(this,MainActivity::class.java))}
+
+    findViewById<Button>(R.id.lgnButton).setOnClickListener{
            signinregistereduser()
     }
-//        val gso=GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).
-//        requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
-//
+//        val gso= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).
+//        requestIdToken(getString(R.string.defaultwebclient)).requestEmail().build()
+
 //        googlesigninclient= GoogleSignIn.getClient(this,gso)
 //        val googlelogin=findViewById<ImageView>(R.id.googleLogin).setOnClickListener {
 //            showprogressdialog("Signing Up...")

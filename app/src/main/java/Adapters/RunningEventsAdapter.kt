@@ -39,9 +39,6 @@ class RunningEventsAdapter(
          eventname=view.findViewById(R.id.EventName)
          eventlocation=view.findViewById(R.id.EventLocation)
          eventdatetime=view.findViewById(R.id.EventDateTime)
-
-
-
         }
 
 
@@ -56,8 +53,8 @@ class RunningEventsAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-     val view:View=LayoutInflater.from(mcontext).inflate(R.layout.card_view,parent,false)
-       return ViewHolder(view)
+       val view:View=LayoutInflater.from(mcontext).inflate(R.layout.card_view,parent,false)
+        return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -67,7 +64,7 @@ class RunningEventsAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
      val event=meventlist[position]
-     Glide.with(mcontext).load(event.image).placeholder(R.drawable.signupname).into(holder.eventimage)
+//     Glide.with(mcontext).load(event.image).placeholder(R.drawable.signupname).into(holder.eventimage)
         holder.eventname?.text=event.eName
         holder.eventlocation!!.text=event.eLoc
         holder.eventdatetime!!.text="${event.eDay+event.eMonth+event.eYear+event.eHour+event.eMinute}"
