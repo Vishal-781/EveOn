@@ -80,7 +80,7 @@ class AddingEvent : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Tim
                 val uid : String? = mAuth.currentUser?.uid
                 if (uid != null) {
                     val eventRef = db.collection("users").document(uid).collection("events")
-                    val event = Event(eName,sday,smonth,syear,shour,sminute,eDes,loc)
+                    val event = Event(eName,sday,smonth,syear,shour,sminute,eDes,loc,)
                     var num:Int =0
                     var id :String=uid
                     uid.let {
