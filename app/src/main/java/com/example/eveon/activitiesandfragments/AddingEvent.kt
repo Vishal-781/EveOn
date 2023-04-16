@@ -9,9 +9,11 @@ import android.text.TextUtils
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.eveon.R
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
@@ -49,6 +51,7 @@ class AddingEvent : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Tim
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adding_event)
+        setupActionBar()
         eNameEt = findViewById(R.id.eName)
         eDesEt = findViewById(R.id.eDes)
         dateBtn = findViewById(R.id.dateButton)
@@ -72,7 +75,7 @@ class AddingEvent : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Tim
             eName = eNameEt.text.toString()
             eDes = eDesEt.text.toString()
             if(TextUtils.isEmpty(eName) || TextUtils.isEmpty(eDes)||TextUtils.isEmpty(dateBtn.text.toString())||TextUtils.isEmpty(timeBtn.text.toString())||loc==""){
-                Toast.makeText(this,"Enter all the fields!!",Toast.LENGTH_LONG).show()
+                showerrorsnackbar("Please Enter all the Field")
             }
             else{
                 val uid : String? = mAuth.currentUser?.uid
@@ -159,5 +162,28 @@ class AddingEvent : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Tim
         shour = p1
         sminute = p2
         timeBtn.text = "$p1:$p2"
+    }
+    fun setupActionBar() {
+        val toolbar123 = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar_full_image)
+        setSupportActionBar(toolbar123)
+        val actionbar = supportActionBar
+
+        toolbar123.setTitleTextColor(resources.getColor(R.color.black))
+        if (actionbar != null) {
+            actionbar.setDisplayHomeAsUpEnabled(true)
+            actionbar.setHomeAsUpIndicator(R.drawable.baseline_arrow_back_ios_24)
+        }
+        toolbar123.setNavigationOnClickListener {
+            onBackPressed()
+
+        }
+    }
+    fun showerrorsnackbar(message:String){
+        // gives the root element of a view without actually knowing its id
+        val snackbar = Snackbar.make(findViewById(android.R.id.content),message, Snackbar.LENGTH_LONG)
+        val snackbarview=snackbar.view
+        snackbarview.setBackgroundColor(ContextCompat.getColor(this, R.color.snackbar_error_color))
+        snackbar.show()
+
     }
 }
