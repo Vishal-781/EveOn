@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.eveon.R
 import models.Event
 
@@ -64,6 +65,14 @@ class RunningEventsAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+     val event=meventlist[position]
+     Glide.with(mcontext).load(event.image).placeholder(R.drawable.signupname).into(holder.eventimage)
+        holder.eventname?.text=event.eName
+        holder.eventlocation!!.text=event.eLoc
+        holder.eventdatetime!!.text="${event.eDay+event.eMonth+event.eYear+event.eHour+event.eMinute}"
+
+
 
     }
 }
