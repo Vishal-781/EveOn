@@ -40,7 +40,6 @@ class AddingEvent : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Tim
     private var loc = ""
     lateinit var eName :String
     lateinit var eDes :String
-
     private val cal = Calendar.getInstance()
     lateinit var dateBtn : Button
     lateinit var timeBtn : Button
@@ -110,9 +109,6 @@ class AddingEvent : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Tim
                                 }
 
                         }
-                        //                    val db1 = FirebaseFirestore.getInstance()
-                        //                    db1.collection("users").document(id).set(event)
-
                     }
                 }
             }
@@ -120,21 +116,6 @@ class AddingEvent : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Tim
         }
 
     }
-
-
-//    eventRef.document(id).set(event).addOnSuccessListener {
-////                            ds.toObject<UserModel>()?.eCount= ds.toObject<UserModel>()?.eCount?.plus(
-////                                1
-////                            )!!
-////                            db.collection("AllEvents").document(id).set(event)
-//        Toast.makeText(this,"Event Added", Toast.LENGTH_LONG).show()
-//    }
-//    .addOnFailureListener { e->
-//        Toast.makeText(this, "Event could not be added\nError: $e", Toast.LENGTH_LONG).show()
-//    }
-//    .addOnCompleteListener {
-//        finish()
-//    }
     private fun pickTime() {
         hour = cal.get(Calendar.HOUR)
         minute = cal.get(Calendar.MINUTE)

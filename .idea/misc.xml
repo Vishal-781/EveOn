@@ -21,9 +21,10 @@
         <entry key="app/src/main/res/layout/custom_toast_layout.xml" value="0.2" />
         <entry key="app/src/main/res/layout/dialog_progress.xml" value="0.35498962402343753" />
         <entry key="app/src/main/res/layout/error_toast_layout.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.5142138470660199" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2990176190386762" />
         <entry key="app/src/main/res/layout/fragment_my_events_.xml" value="0.21979166666666666" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.5989091692349962" />
+        <entry key="app/src/main/res/layout/fragment_unknownfragment.xml" value="0.21979166666666666" />
         <entry key="app/src/main/res/layout/list_item.xml" value="0.21875" />
         <entry key="app/src/main/res/layout/p_details.xml" value="0.2331527709960938" />
         <entry key="app/src/main/res/menu/bottom_navbar.xml" value="0.21979166666666666" />
