@@ -2,15 +2,15 @@
     <!-- Base application theme. -->
     <style name="Theme.EveOn" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#2196F3</item>
-        <item name="colorPrimaryVariant">#2196F3</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">#3A2560</item>
+        <item name="colorPrimaryVariant">#553889</item>
+        <item name="colorOnPrimary">@color/onPrimaryDark</item>
         <!-- Secondary brand color. -->
 
         <item name="android:windowFullscreen">true</item>
-        <item name="colorSecondary">#2196F3</item>
-        <item name="colorSecondaryVariant">#2196F3</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">#673AB7</item>
+        <item name="colorSecondaryVariant">#623DA3</item>
+        <item name="colorOnSecondary">@color/onPrimaryLight</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->

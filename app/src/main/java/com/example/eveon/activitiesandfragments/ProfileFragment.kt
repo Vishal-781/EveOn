@@ -38,8 +38,8 @@ class ProfileFragment : Fragment() {
         nameView.visibility = View.INVISIBLE
         emailView.visibility = View.INVISIBLE
         photo.visibility = View.INVISIBLE
-        nameView.setTextColor(resources.getColor(R.color.black))
-        emailView.setTextColor(resources.getColor(R.color.black))
+        nameView.setTextColor(resources.getColor(R.color.onPrimaryDark))
+        emailView.setTextColor(resources.getColor(R.color.onPrimaryDark))
         val progBar = view.findViewById<ProgressBar>(R.id.progressBar)
         val uid = mAuth.uid
         uid?.let {

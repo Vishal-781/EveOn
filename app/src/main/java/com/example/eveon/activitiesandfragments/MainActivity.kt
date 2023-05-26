@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 
 import com.example.eveon.R
-import com.example.eveon.databinding.ActivityMainBinding
+
 import com.google.firebase.auth.FirebaseAuth
 import pages.Login
 
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         val   toolbar_homefragment1 =findViewById<Toolbar>(R.id.toolbar_homefragment)
         toolbar_homefragment1.title = resources.getString(R.string.app_name)
-        toolbar_homefragment1.setTitleTextColor(resources.getColor(R.color.black_1))
+        toolbar_homefragment1.setTitleTextColor(resources.getColor(R.color.onPrimaryDark))
         setSupportActionBar(toolbar_homefragment1)
         navigation.add(MeowBottomNavigation.Model(1,R.drawable.house_real))
         navigation.add(MeowBottomNavigation.Model(2,R.drawable.placard4))
@@ -54,9 +54,9 @@ class MainActivity : AppCompatActivity() {
         navigation.setOnShowListener {
             when(it.id)
             {
-                1-> navigation.setBackgroundColor(resources.getColor(R.color.coloraccent))
+                1-> navigation.setBackgroundColor(resources.getColor(R.color.colorPrimary))
 
-                2-> navigation.setBackgroundColor(resources.getColor(com.jpardogo.android.googleprogressbar.library.R.color.green))
+                2-> navigation.setBackgroundColor(resources.getColor(R.color.colorPrimary))
                 3-> addfragment(unknownfragment(),1)
                 4-> addfragment(ProfileFragment(),1)
                 else->{

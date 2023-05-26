@@ -57,6 +57,6 @@ class RunningEventsAdapter(
 //     Glide.with(mcontext).load(event.image).placeholder(R.drawable.signupname).into(holder.eventimage)
         holder.eventname?.text=event.eName
         holder.eventlocation!!.text=event.eLoc
-        holder.eventdatetime!!.text="${event.eDay+event.eMonth+event.eYear+event.eHour+event.eMinute}"
+        holder.eventdatetime!!.text="${event.eDay}/${event.eMonth}/${event.eYear}\t${event.eHour}:${event.eMinute}"
     }
 }

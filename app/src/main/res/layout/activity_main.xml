@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/toolbar_homefragment"
-            android:background="#2196F3"
+            android:background="@color/colorPrimaryDark"
 
             />
     </com.google.android.material.appbar.AppBarLayout>
@@ -33,10 +33,10 @@
        android:layout_alignParentBottom="true"
        android:id="@+id/bottom_navigation_bar"
 
-       app:mbn_backgroundBottomColor="#232860"
-       app:mbn_circleColor="#1ba3c1"
-       app:mbn_selectedIconColor="@color/white"
-       app:mbn_rippleColor="@color/black"/>
+       app:mbn_backgroundBottomColor="@color/colorPrimaryDark"
+       app:mbn_circleColor="@color/colorPrimary"
+       app:mbn_selectedIconColor="@color/onPrimaryDark"
+       app:mbn_rippleColor="@color/onPrimaryLight"/>
 
 
 </RelativeLayout>

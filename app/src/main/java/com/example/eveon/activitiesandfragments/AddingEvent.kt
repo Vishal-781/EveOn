@@ -72,7 +72,7 @@ class AddingEvent : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Tim
         val items = listOf("Penman Auditorium","GJLT","OAT","Gymkhana Ground","Lower Ground","SAC","NLHC","Library")
         val adapter = ArrayAdapter(this, R.layout.list_item, items)
         locationDropDown.setAdapter(adapter)
-        locationDropDown.setOnItemClickListener { adapterView, view, i, l ->
+        locationDropDown.setOnItemClickListener { adapterView, _, i, _ ->
             loc = adapterView.getItemAtPosition(i).toString()
         }
         btn.setOnClickListener {
@@ -173,7 +173,7 @@ class AddingEvent : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Tim
         setSupportActionBar(toolbar123)
         val actionbar = supportActionBar
 
-        toolbar123.setTitleTextColor(resources.getColor(R.color.black))
+        toolbar123.setTitleTextColor(resources.getColor(R.color.onPrimaryDark))
         if (actionbar != null) {
             actionbar.setDisplayHomeAsUpEnabled(true)
             actionbar.setHomeAsUpIndicator(R.drawable.baseline_arrow_back_ios_24)

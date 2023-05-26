@@ -21,13 +21,14 @@
         android:id="@+id/toolbar_full_image"
         android:layout_width="0dp"
         android:layout_height="?actionBarSize"
-        android:background="#2196F3"
+        android:background="@color/colorPrimaryDark"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Add Event" />
+        app:title="Add Event"
+        app:titleTextColor="@color/onPrimaryDark"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/eNamelayout"
@@ -60,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:hint="Select date"
-        app:backgroundTint="#CDD1D5"
+        app:backgroundTint="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="@+id/eNamelayout"
         app:layout_constraintTop_toBottomOf="@+id/eNamelayout" />
 
@@ -68,11 +69,10 @@
         android:id="@+id/timeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
         android:hint="Select time"
-        app:backgroundTint="#CDD1D5"
+        app:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="@+id/dateButton"
-        app:layout_constraintStart_toEndOf="@+id/dateButton" />
+        app:layout_constraintEnd_toEndOf="@+id/eNamelayout" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edeslayout"

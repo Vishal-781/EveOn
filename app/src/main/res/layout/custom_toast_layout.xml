@@ -21,7 +21,7 @@
 
         android:layout_gravity="center"
         android:textSize="20sp"
-        android:textColor="@color/black"
+        android:textColor="@color/onPrimaryLight"
         android:textStyle="italic">
 
     </TextView>

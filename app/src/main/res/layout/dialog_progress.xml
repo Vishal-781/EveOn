@@ -11,7 +11,7 @@
      android:layout_height="wrap_content"
      android:layout_centerHorizontal="true"
      android:text="Please Wait..."
-     android:textColor="@color/coloraccent"
+     android:textColor="@color/colorPrimary"
      android:textSize="25dp"
 
      android:textStyle="italic"
