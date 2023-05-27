@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activitiesandfragments.CardViewFully"
-    android:background="">
+    android:background="@drawable/background1"
+  >
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout2"

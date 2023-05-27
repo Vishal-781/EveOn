@@ -37,6 +37,7 @@ class AddingEvent : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Tim
     var syear = 0
     var shour = 0
     var sminute = 0
+    var hours = 0
     private var loc = ""
     lateinit var eName :String
     lateinit var eDes :String
@@ -50,6 +51,8 @@ class AddingEvent : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Tim
     lateinit var eTagsEt : EditText
     lateinit var eBugEt : EditText
     lateinit var btn : Button
+    lateinit var eHours : EditText
+
     private lateinit var locationDropDown : AutoCompleteTextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +64,7 @@ class AddingEvent : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Tim
         eTagsEt = findViewById(R.id.eTag)
         dateBtn = findViewById(R.id.dateButton)
         timeBtn = findViewById(R.id.timeButton)
+        eHours = findViewById(R.id.eHours)
         btn = findViewById(R.id.button)
         locationDropDown = findViewById(R.id.eLoc)
         dateBtn.setOnClickListener {
@@ -76,19 +80,20 @@ class AddingEvent : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Tim
             loc = adapterView.getItemAtPosition(i).toString()
         }
         btn.setOnClickListener {
-
+            val strhr = eHours.text.toString()
+            if(strhr!="")
+                hours = Integer.parseInt(strhr)
             eName = eNameEt.text.toString()
             eDes = eDesEt.text.toString()
             eBug = Integer.parseInt(eBugEt.text.toString())
             eTags = eTagsEt.text.toString()
-            if(TextUtils.isEmpty(eName) || TextUtils.isEmpty(eDes)||TextUtils.isEmpty(dateBtn.text.toString())||TextUtils.isEmpty(timeBtn.text.toString())||loc==""||TextUtils.isEmpty(eBugEt.text.toString())||TextUtils.isEmpty(eTagsEt.text.toString())){
+            if(TextUtils.isEmpty(eName) || TextUtils.isEmpty(eDes)||TextUtils.isEmpty(dateBtn.text.toString())||TextUtils.isEmpty(timeBtn.text.toString())||loc==""||TextUtils.isEmpty(eBugEt.text.toString())||TextUtils.isEmpty(eTagsEt.text.toString())||TextUtils.isEmpty(eHours.text.toString())){
                 showerrorsnackbar("Please Enter all the Field")
             }
             else{
                 val uid : String? = mAuth.currentUser?.uid
                 if (uid != null) {
                     val eventRef = db.collection("users").document(uid).collection("events")
-
                     var num:Int =0
                     var id :String=uid
                     uid.let { it1 ->
@@ -105,7 +110,7 @@ class AddingEvent : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Tim
                                 i++
                             }
                             id = "$uid$i"
-                            val event = Event(eName,sday,smonth,syear,shour,sminute,eDes,loc,eBug,eid=id)
+                            val event = Event(eName,sday,smonth,syear,shour,sminute,hours,eDes,loc,eBug,eid=id)
                             db.collection("users").document(it1).get().addOnSuccessListener() { ds ->
                                 num = ds.toObject<UserModel>()!!.pDetails.eCount
                                 num+=1
@@ -152,7 +157,6 @@ class AddingEvent : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Tim
         day = cal.get(Calendar.DAY_OF_MONTH)
         month = cal.get(Calendar.MONTH)
         year = cal.get(Calendar.YEAR)
-
         DatePickerDialog(this, this, year,month,day).show()
     }
 

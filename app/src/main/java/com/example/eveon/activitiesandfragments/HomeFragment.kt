@@ -17,7 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.toObject
 import models.Event
-import java.util.ArrayList
+import java.util.*
 
 
 class HomeFragment : Fragment() {
@@ -33,13 +33,33 @@ private lateinit var floatingactionbtn:FloatingActionButton
         val view= inflater.inflate(R.layout.fragment_home, container, false)
         recyclerviewrunningevent=view.findViewById(R.id.recycler_view_running)
         recyclerviewrunningevent.setHasFixedSize(true)
-
         val linearlayoutmanager= LinearLayoutManager(context)
-        linearlayoutmanager.stackFromEnd=true
+        linearlayoutmanager.stackFromEnd = false
         recyclerviewrunningevent.layoutManager=linearlayoutmanager
         val db = FirebaseFirestore.getInstance()
 
+
         db.collection("allEvents").get()
+            .addOnCompleteListener {
+                if(it.isSuccessful)
+                {
+                    for(doc in it.result)
+                    {
+                        val currTime = System.currentTimeMillis()
+                        val ev = doc.toObject<Event>()
+                        val cal = Calendar.getInstance()
+                            cal.set(ev.eYear,ev.eMonth,ev.eDay,ev.eHour,ev.eMinute)
+                        val eTime = cal.timeInMillis
+                        if(currTime>=eTime)
+                            db.collection("allEvents").document(doc.id).update("bit",1)
+                    }
+                }
+            }
+
+        db.collection("allEvents").get()
+//            .addOnSuccessListener {
+//
+//            }
             .addOnCompleteListener(OnCompleteListener<QuerySnapshot?> { task ->
                 if (task.isSuccessful) {
                     list= mutableListOf<Event>()
@@ -47,11 +67,13 @@ private lateinit var floatingactionbtn:FloatingActionButton
                     for (document in task.result) {
                         list!!.add(document.toObject<Event>())
                     }
+
                 } else {
                     Toast.makeText(view.context,"list made",Toast.LENGTH_LONG).show()
                 }
                 chatAdapter= list?.let { RunningEventsAdapter(view.context, it) }
                 recyclerviewrunningevent.adapter=chatAdapter
+//                chatAdapter?.notifyDataSetChanged()
             })
          floatingactionbtn=view.findViewById(R.id.floating_action_home)
          floatingactionbtn.setOnClickListener {

@@ -33,7 +33,8 @@
         <entry key="app/src/main/res/drawable/toast_layout.xml" value="0.1745" />
         <entry key="app/src/main/res/drawable/toast_layout_error.xml" value="0.149" />
         <entry key="app/src/main/res/drawable/wave.xml" value="0.133" />
-        <entry key="app/src/main/res/layout/activity_adding_event.xml" value="0.32843933105468753" />
+        <entry key="app/src/main/res/layout/activity_adding_event.xml" value="0.25175018310546876" />
+        <entry key="app/src/main/res/layout/activity_card_view_fully.xml" value="0.35748363269800143" />
         <entry key="app/src/main/res/layout/activity_forgotpassword.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.19231567382812498" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19429347826086957" />

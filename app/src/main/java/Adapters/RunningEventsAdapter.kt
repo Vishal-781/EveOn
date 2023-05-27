@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintSet.Layout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.eveon.R
 import com.example.eveon.activitiesandfragments.CardViewFully
@@ -18,66 +17,57 @@ import models.Event
 class RunningEventsAdapter(
     mContext:Context,
     mEventList:List<Event>
- ):RecyclerView.Adapter<RunningEventsAdapter.ViewHolder?>()
-{
- private val mContext:Context
- private val mEventList:List<Event>
+ ):RecyclerView.Adapter<RunningEventsAdapter.ViewHolder?>() {
+    private val mContext: Context
+    private val mEventList: List<Event>
 
     init {
-        this.mContext= mContext
-        this.mEventList=mEventList
+        this.mContext = mContext
+        this.mEventList = mEventList
 
     }
 
-    inner class ViewHolder(view: View):RecyclerView.ViewHolder(view)
-    {
-        var touchid:View?=null
-       var eventimage:ImageView?=null
-       var eventname:TextView?=null
-       var eventlocation:TextView?=null
-       var eventdatetime:TextView?=null
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+        var touchid: View? = null
+        var eventimage: ImageView? = null
+        var eventname: TextView? = null
+        var eventlocation: TextView? = null
+        var eventdatetime: TextView? = null
 
         init {
-            touchid=view.findViewById(R.id.touchId)
-         eventimage=view.findViewById(R.id.imageEvent)
-         eventname=view.findViewById(R.id.EventName)
-         eventlocation=view.findViewById(R.id.EventLocation)
-         eventdatetime=view.findViewById(R.id.EventDateTime)
+            touchid = view.findViewById(R.id.touchId)
+            eventimage = view.findViewById(R.id.imageEvent)
+            eventname = view.findViewById(R.id.EventName)
+            eventlocation = view.findViewById(R.id.EventLocation)
+            eventdatetime = view.findViewById(R.id.EventDateTime)
         }
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-      val view:View=LayoutInflater.from(mContext).inflate(R.layout.card_view,parent,false)
-          return ViewHolder(view)
+        val view: View = LayoutInflater.from(mContext).inflate(R.layout.card_view, parent, false)
+        return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-     return  mEventList.size
+        return mEventList.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-     val event=mEventList[position]
+        val event = mEventList[position]
 //     Glide.with(mcontext).load(event.image).placeholder(R.drawable.signupname).into(holder.eventimage)
-        holder.eventname?.text=event.eName
-        holder.eventlocation!!.text=event.eLoc
-        holder.eventdatetime!!.text="${event.eDay}/${event.eMonth}/${event.eYear}\t${event.eHour}:${event.eMinute}"
+        holder.eventname?.text = event.eName
+        holder.eventlocation!!.text = event.eLoc
+        holder.eventdatetime!!.text =
+            "${event.eDay} ${event.eMonth} ${event.eYear} ${event.eHour}:${event.eMinute}"
 
         holder.touchid!!.setOnClickListener {
-            val intent= Intent(mContext,CardViewFully::class.java)
-            intent.putExtra("Url_event_id",event.eid)
-            intent.putExtra("Url_event_name",event.eName)
-            intent.putExtra("Url_event_location",event.eLoc)
-            intent.putExtra("Url_event_daytime","${event.eDay}/${event.eMonth}/${event.eYear}\t${event.eHour}:${event.eMinute}")
+            val intent = Intent(mContext, CardViewFully::class.java)
+            intent.putExtra("Url_event_id", event.eid)
             mContext.startActivity(intent)
 
-
         }
-
-
-
-
-
     }
 }
