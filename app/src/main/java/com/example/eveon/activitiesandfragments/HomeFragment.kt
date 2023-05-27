@@ -65,6 +65,7 @@ private lateinit var floatingactionbtn:FloatingActionButton
                     list= mutableListOf<Event>()
                     list!!.clear()
                     for (document in task.result) {
+//                        if(document.toObject<Event>().bit==0)
                         list!!.add(document.toObject<Event>())
                     }
 

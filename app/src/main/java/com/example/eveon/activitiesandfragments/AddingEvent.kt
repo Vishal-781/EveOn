@@ -110,7 +110,7 @@ class AddingEvent : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Tim
                                 i++
                             }
                             id = "$uid$i"
-                            val event = Event(eName,sday,smonth,syear,shour,sminute,hours,eDes,loc,eBug,eid=id)
+                            val event = Event(eName,sday,smonth,syear,shour,sminute,hours,eDes,loc,eBug,eid=id, 0,regCount=0)
                             db.collection("users").document(it1).get().addOnSuccessListener() { ds ->
                                 num = ds.toObject<UserModel>()!!.pDetails.eCount
                                 num+=1

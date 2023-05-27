@@ -2,12 +2,15 @@ package com.example.eveon.activitiesandfragments
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
+import android.view.View
+import android.widget.*
+import androidx.cardview.widget.CardView
 import com.example.eveon.R
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 import models.Event
 
 
@@ -37,10 +40,9 @@ class CardViewFully : AppCompatActivity() {
         var eventLocation=findViewById<TextView>(R.id.textView2)
         var eventDescription=findViewById<TextView>(R.id.event_description)
         var registerButton=findViewById<Button>(R.id.eRegisterButton)
-
-
-
-
+        var cardView = findViewById<CardView>(R.id.cardView)
+        var progressbar = findViewById<ProgressBar>(R.id.progressBar2)
+        var regTextView = findViewById<TextView>(R.id.reg_count_view)
 
         var eid=intent.getStringExtra("Url_event_id")
         db=FirebaseFirestore.getInstance()
@@ -50,13 +52,35 @@ class CardViewFully : AppCompatActivity() {
             eventLocation.text="${ds.toObject<Event>()?.eLoc}"
             eventDescription.text="${ds.toObject<Event>()?.eDes}"
             actionbar!!.title="${ds.toObject<Event>()?.eName}"
-
-
-
+            regTextView.text = "${ds.toObject<Event>()?.regCount}"
         }
+            .addOnCompleteListener {
+                progressbar.visibility = View.INVISIBLE
+                eventImage.visibility = View.VISIBLE
+                cardView.visibility = View.VISIBLE
+                registerButton.visibility =  View.VISIBLE
+            }
+        registerButton.setOnClickListener {
 
+            val docRef = db.collection("allEvents").document(eid)
 
-
+            docRef.get().addOnCompleteListener { it ->
+                val document = it.result
+                var regCount:Int
+                if(document.exists())
+                {
+                    regCount = document.getLong("regCount")?.toInt()!!
+                    regCount +=1
+                    docRef.update("regCount",regCount)
+                        .addOnSuccessListener {
+                            Toast.makeText(this, "Registration Successful!",Toast.LENGTH_LONG).show()
+                        }
+                        .addOnFailureListener {e->
+                            Toast.makeText(this, "Error:${e.message}",Toast.LENGTH_LONG).show()
+                        }
+                }
+            }
+        }
 
 
 

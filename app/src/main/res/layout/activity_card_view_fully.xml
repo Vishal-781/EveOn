@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activitiesandfragments.CardViewFully"
     android:background="@drawable/background1"
-  >
+    tools:context=".activitiesandfragments.CardViewFully">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout2"
@@ -25,74 +24,28 @@
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="325dp"
         android:layout_height="200dp"
         android:layout_marginTop="32dp"
-        android:src="@drawable/signupname"
+        android:src="@drawable/pngegg"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout2" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="32dp"
-        android:text="Date"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-    <TextView
-        android:id="@+id/textview_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="84dp"
-        android:text="Time"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="20dp"
-        android:text="Location:"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="184dp"
-        android:layout_marginTop="28dp"
-        android:text="Location"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
-        android:text="Description:"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="25dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -100,37 +53,167 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="35dp"
         android:layout_marginTop="20dp"
-        android:backgroundTint="#E1E1E1"
+        app:cardBackgroundColor="@color/onPrimaryDark"
         app:cardCornerRadius="12dp"
         app:cardElevation="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4">
+        android:visibility="invisible"
 
-        <TextView
-            android:id="@+id/event_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="Description"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20dp"
-            android:textStyle="italic"/>
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp">
 
+            <ImageView
+                android:id="@+id/cal_img"
+                android:layout_width="25dp"
+                android:layout_height="22dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/calender"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="Date"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/cal_img"
+                app:layout_constraintStart_toEndOf="@+id/cal_img"
+                app:layout_constraintTop_toTopOf="@+id/cal_img" />
+
+            <TextView
+                android:id="@+id/textview_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Time"
+                android:textColor="#615D67"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/textView"
+                app:layout_constraintStart_toEndOf="@+id/textView" />
+
+            <ImageView
+                android:id="@+id/loc_img"
+                android:layout_width="25dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/location"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/cal_img"
+                app:layout_constraintTop_toBottomOf="@+id/cal_img" />
+
+            <ImageView
+                android:id="@+id/des_img"
+                android:layout_width="25dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/des"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/loc_img"
+                app:layout_constraintTop_toBottomOf="@+id/loc_img" />
+
+            <ImageView
+                android:id="@+id/reg_img"
+                android:layout_width="25dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/register"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/des_img"
+                app:layout_constraintTop_toBottomOf="@+id/event_description" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/loc_img"
+                app:layout_constraintStart_toStartOf="@+id/textView"
+                app:layout_constraintTop_toTopOf="@+id/loc_img" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description:"
+                android:textColor="#615D67"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/textView2"
+                app:layout_constraintBottom_toBottomOf="@+id/des_img"
+                app:layout_constraintTop_toTopOf="@+id/des_img"/>
+
+            <TextView
+                android:id="@+id/event_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingEnd="90dp"
+                android:layout_marginEnd="10dp"
+                android:text="Description"
+                android:textColor="@color/colorPrimary"
+                android:textSize="15sp"
+                android:textStyle="italic"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@id/textView4"
+                app:layout_constraintTop_toBottomOf="@id/textView4" />
+
+            <TextView
+                android:id="@+id/reg_count_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Registrations:"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/textView4"
+                app:layout_constraintBottom_toBottomOf="@id/reg_img"
+                app:layout_constraintTop_toTopOf="@id/reg_img"/>
+
+            <TextView
+                android:id="@+id/reg_count_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="0"
+                android:textSize="17sp"
+                android:textColor="#615D67"
+                app:layout_constraintStart_toEndOf="@+id/reg_count_text"
+                app:layout_constraintBottom_toBottomOf="@id/reg_count_text" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/eRegisterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
+        android:text="Register"
+        android:visibility="invisible"
+
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
-        android:textColor="#FFFFFF"
-        android:text="Register"/>
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
