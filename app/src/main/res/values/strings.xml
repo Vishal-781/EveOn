@@ -4,9 +4,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sucReg">You Have Successfully Registered</string>
     <string name="name">Name</string>
-   <string name="facebook_app_id">555635603113781</string>
+    <string name="facebook_app_id">555635603113781</string>
     <string name="fb_login_protocol_scheme">fb555635603113781</string>
     <string name="facebook_client_token">56789</string>
 
-    
+
 </resources>

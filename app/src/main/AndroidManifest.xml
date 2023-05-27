@@ -13,17 +13,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EveOn"
         tools:targetApi="31">
-<!--        <meta-data-->
-<!--            android:name="com.facebook.sdk.ApplicationId"-->
-<!--            android:value="@string/facebook_app_id">-->
-
-<!--        </meta-data>-->
-<!--        <meta-data-->
-<!--            android:name="com.facebook.sdk.ClientToken"-->
-<!--            android:value="@string/facebook_client_token"-->
-<!--            />-->
         <activity
-            android:name="com.example.eveon.activitiesandfragments.p_details"
+            android:name=".activitiesandfragments.CardViewFully"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <!-- <meta-data -->
+        <!-- android:name="com.facebook.sdk.ApplicationId" -->
+        <!-- android:value="@string/facebook_app_id"> -->
+        <!-- </meta-data> -->
+        <!-- <meta-data -->
+        <!-- android:name="com.facebook.sdk.ClientToken" -->
+        <!-- android:value="@string/facebook_client_token" -->
+        <!-- /> -->
+        <activity
+            android:name=".activitiesandfragments.p_details"
             android:exported="false" />
         <activity
             android:name="pages.forgotpassword"
@@ -38,11 +41,11 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.eveon.activitiesandfragments.AddingEvent"
+            android:name=".activitiesandfragments.AddingEvent"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.eveon.activitiesandfragments.SplashScreen"
+            android:name=".activitiesandfragments.SplashScreen"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -52,7 +55,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.eveon.activitiesandfragments.MainActivity"
+            android:name=".activitiesandfragments.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
     </application>
