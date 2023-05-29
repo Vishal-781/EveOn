@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:ems="10"
-            android:hint="Event hours"
+            android:hint="Event Duration(in hrs)"
             android:inputType="number"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"

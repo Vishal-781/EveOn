@@ -43,7 +43,7 @@ class AddingEvent : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Tim
     lateinit var eDes :String
     lateinit var eTags :String
     private var eBug = 0
-    private val cal = Calendar.getInstance()
+
     lateinit var dateBtn : Button
     lateinit var timeBtn : Button
     lateinit var eNameEt : EditText
@@ -101,6 +101,7 @@ class AddingEvent : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Tim
                             val list = it.result.documents
                             var i =0
                             val p = uid.length
+                            num=list.size
                             for(d in list){
                                val idl = d.id.length
                                 if(i!=Integer.parseInt(d.id.substring(p,idl)))
@@ -110,9 +111,8 @@ class AddingEvent : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Tim
                                 i++
                             }
                             id = "$uid$i"
-                            val event = Event(eName,sday,smonth,syear,shour,sminute,hours,eDes,loc,eBug,eid=id, 0,regCount=0)
+                            val event = Event(eName,sday,smonth,syear,shour,sminute,hours,eDes,loc,eBug,eid=id, 0)
                             db.collection("users").document(it1).get().addOnSuccessListener() { ds ->
-                                num = ds.toObject<UserModel>()!!.pDetails.eCount
                                 num+=1
 //                            Toast.makeText(this,id,Toast.LENGTH_LONG).show()
                             }.addOnCompleteListener(){
@@ -147,13 +147,14 @@ class AddingEvent : AppCompatActivity(), DatePickerDialog.OnDateSetListener, Tim
 
     }
     private fun pickTime() {
-        hour = cal.get(Calendar.HOUR)
+        val cal = Calendar.getInstance()
+        hour = cal.get(Calendar.HOUR_OF_DAY)
         minute = cal.get(Calendar.MINUTE)
-
-        TimePickerDialog(this, this, hour,minute,true).show()
+        TimePickerDialog(this, this, hour, minute ,true).show()
     }
 
     private fun pickDate() {
+        val cal = Calendar.getInstance()
         day = cal.get(Calendar.DAY_OF_MONTH)
         month = cal.get(Calendar.MONTH)
         year = cal.get(Calendar.YEAR)

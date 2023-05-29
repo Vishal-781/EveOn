@@ -10,6 +10,7 @@
     <color name="background">#232860</color>
     <color name="colorPrimary">#673AB7</color>
     <color name="colorPrimaryDark">#3A2560</color>
+    <color name="grey">#615D67</color>
     <color name="dark">#292640</color>
     <color name="light">#A6ECD4</color>
     <color name="snackbar_error_color">#F72400</color>

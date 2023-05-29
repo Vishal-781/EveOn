@@ -21,14 +21,18 @@ import models.Event
 import java.util.*
 
 
+
 class HomeFragment : Fragment() {
 private lateinit var floatingactionbtn:FloatingActionButton
     private lateinit var recyclerviewrunningevent: RecyclerView
     private lateinit var recyclerviewupcomingevent:RecyclerView
-    private var chatAdapterRunningEvents:RunningEventsAdapter?=null
-    private var chatAdapterUpcomingEvents:UpcomingEventsAdapter?=null
+    private var eventAdapterRunningEvents:RunningEventsAdapter?=null
+    private var eventAdapterUpcomingEvents:UpcomingEventsAdapter?=null
     private var meventlist: List<Event>?=null
-    private var list : MutableList<Event>?=null
+    private var list1 : MutableList<Event>?=null
+    private var list2 : MutableList<Event>?=null
+    private lateinit var db : FirebaseFirestore
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -44,47 +48,51 @@ private lateinit var floatingactionbtn:FloatingActionButton
         val linearlayoutmanager= LinearLayoutManager(context)
         linearlayoutmanager.stackFromEnd = false
         recyclerviewrunningevent.layoutManager=linearlayoutmanager
-        val db = FirebaseFirestore.getInstance()
-
+        db = FirebaseFirestore.getInstance()
 
         db.collection("allEvents").get()
-            .addOnCompleteListener {
-                if(it.isSuccessful)
-                {
-                    for(doc in it.result)
-                    {
-                        val currTime = System.currentTimeMillis()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    list1 = mutableListOf<Event>()
+                    list1!!.clear()
+                    list2 = mutableListOf<Event>()
+                    list2!!.clear()
+
+                    for (doc in task.result) {
+                        val currTime : Long = System.currentTimeMillis()
                         val ev = doc.toObject<Event>()
-                         val cal = Calendar.getInstance()
-                            cal.set(ev.eYear,ev.eMonth,ev.eDay,ev.eHour,ev.eMinute)
-                        val eTime = cal.timeInMillis
-                        if(currTime>=eTime)
-                            db.collection("allEvents").document(doc.id).update("bit",1)
+                        val hrs = ev.eHours
+                        val cal = Calendar.getInstance()
+                        cal.set(ev.eYear, ev.eMonth, ev.eDay, ev.eHour, ev.eMinute)
+                        val eStartTime : Long = cal.timeInMillis
+                        cal.add(Calendar.HOUR_OF_DAY,hrs)
+                        val eFinishTime : Long = cal.timeInMillis
+                        if(currTime >= eStartTime)
+                        {
+                            if(eFinishTime>=currTime)
+                            {
+                                db.collection("allEvents").document(ev.eid).update("bit",1)
+                                list2!!.add(ev)
+                            }
+                            else
+                            {
+                                db.collection("allEvents").document(ev.eid).update("bit",-1)
+                            }
+                        }
+                        else
+                        {
+                            db.collection("allEvents").document(ev.eid).update("bit",0)
+                            list1!!.add(ev)
+                        }
                     }
+                    eventAdapterUpcomingEvents = list1?.let { UpcomingEventsAdapter(view.context, it) }
+                    recyclerviewupcomingevent.adapter = eventAdapterUpcomingEvents
+                    eventAdapterRunningEvents = list2?.let { RunningEventsAdapter(view.context, it) }
+                    recyclerviewrunningevent.adapter = eventAdapterRunningEvents
                 }
             }
 
-        db.collection("allEvents").get()
-//            .addOnSuccessListener {
-//
-//            }
-            .addOnCompleteListener(OnCompleteListener<QuerySnapshot?> { task ->
-                if (task.isSuccessful) {
-                    list= mutableListOf<Event>()
-                    list!!.clear()
-                    for (document in task.result) {
-//                        if(document.toObject<Event>().bit==0)
-                        list!!.add(document.toObject<Event>())
-                    }
-
-                } else {
-                    Toast.makeText(view.context,"list made",Toast.LENGTH_LONG).show()
-                }
-                chatAdapterUpcomingEvents= list?.let { UpcomingEventsAdapter(view.context, it) }
-                recyclerviewupcomingevent.adapter=chatAdapterUpcomingEvents
-//                chatAdapter?.notifyDataSetChanged()
-            })
-         floatingactionbtn=view.findViewById(R.id.floating_action_home)
+        floatingactionbtn=view.findViewById(R.id.floating_action_home)
          floatingactionbtn.setOnClickListener {
             val intent=Intent(context,AddingEvent::class.java)
              startActivity(intent)
