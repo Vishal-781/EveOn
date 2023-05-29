@@ -1,6 +1,7 @@
 package com.example.eveon.activitiesandfragments
 
 import Adapters.RunningEventsAdapter
+import Adapters.UpcomingEventsAdapter
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -23,7 +24,9 @@ import java.util.*
 class HomeFragment : Fragment() {
 private lateinit var floatingactionbtn:FloatingActionButton
     private lateinit var recyclerviewrunningevent: RecyclerView
-    private var chatAdapter:RunningEventsAdapter?=null
+    private lateinit var recyclerviewupcomingevent:RecyclerView
+    private var chatAdapterRunningEvents:RunningEventsAdapter?=null
+    private var chatAdapterUpcomingEvents:UpcomingEventsAdapter?=null
     private var meventlist: List<Event>?=null
     private var list : MutableList<Event>?=null
     override fun onCreateView(
@@ -31,7 +34,12 @@ private lateinit var floatingactionbtn:FloatingActionButton
         savedInstanceState: Bundle?,
     ): View? {
         val view= inflater.inflate(R.layout.fragment_home, container, false)
+        recyclerviewupcomingevent=view.findViewById(R.id.upcoming_recycler)
         recyclerviewrunningevent=view.findViewById(R.id.recycler_view_running)
+        recyclerviewupcomingevent.setHasFixedSize(true)
+        val linearlayoutmanager1=LinearLayoutManager(context)
+        linearlayoutmanager1.stackFromEnd=false
+        recyclerviewupcomingevent.layoutManager=linearlayoutmanager1
         recyclerviewrunningevent.setHasFixedSize(true)
         val linearlayoutmanager= LinearLayoutManager(context)
         linearlayoutmanager.stackFromEnd = false
@@ -47,7 +55,7 @@ private lateinit var floatingactionbtn:FloatingActionButton
                     {
                         val currTime = System.currentTimeMillis()
                         val ev = doc.toObject<Event>()
-                        val cal = Calendar.getInstance()
+                         val cal = Calendar.getInstance()
                             cal.set(ev.eYear,ev.eMonth,ev.eDay,ev.eHour,ev.eMinute)
                         val eTime = cal.timeInMillis
                         if(currTime>=eTime)
@@ -72,8 +80,8 @@ private lateinit var floatingactionbtn:FloatingActionButton
                 } else {
                     Toast.makeText(view.context,"list made",Toast.LENGTH_LONG).show()
                 }
-                chatAdapter= list?.let { RunningEventsAdapter(view.context, it) }
-                recyclerviewrunningevent.adapter=chatAdapter
+                chatAdapterUpcomingEvents= list?.let { UpcomingEventsAdapter(view.context, it) }
+                recyclerviewupcomingevent.adapter=chatAdapterUpcomingEvents
 //                chatAdapter?.notifyDataSetChanged()
             })
          floatingactionbtn=view.findViewById(R.id.floating_action_home)
